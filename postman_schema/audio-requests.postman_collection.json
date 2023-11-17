@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "b23ec743-e43d-4218-a114-02d2e57ddd0d",
+		"name": "audio-requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13527153"
+	},
+	"item": [
+		{
+			"name": "add new record",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "title",
+							"type": "text"
+						},
+						{
+							"key": "genre",
+							"value": "pop",
+							"type": "text"
+						},
+						{
+							"key": "audioFile",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "imageFile",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": "localhost:5010/audio"
+			},
+			"response": []
+		},
+		{
+			"name": "read all",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>ID</th>\r",
+							"        <th>Title</th>\r",
+							"        <th>Genre</th>\r",
+							"        <th>Size</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response.audio}}\r",
+							"        <tr>\r",
+							"            <td>{{id}}</td>\r",
+							"            <td>{{title}}</td>\r",
+							"            <td>{{genre}}</td>\r",
+							"            <td>{{size}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "audio/mpeg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": "localhost:5010/audio"
+			},
+			"response": []
+		},
+		{
+			"name": "read one",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>ID</th>\r",
+							"        <th>Title</th>\r",
+							"        <th>Genre</th>\r",
+							"        <th>Size</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response.audio}}\r",
+							"        <tr>\r",
+							"            <td>{{id}}</td>\r",
+							"            <td>{{title}}</td>\r",
+							"            <td>{{genre}}</td>\r",
+							"            <td>{{size}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "audio/mpeg",
+						"type": "text"
+					}
+				],
+				"url": "localhost:5010/audio/1"
+			},
+			"response": []
+		},
+		{
+			"name": "delete one",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>ID</th>\r",
+							"        <th>Title</th>\r",
+							"        <th>Genre</th>\r",
+							"        <th>Size</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response.audio}}\r",
+							"        <tr>\r",
+							"            <td>{{id}}</td>\r",
+							"            <td>{{title}}</td>\r",
+							"            <td>{{genre}}</td>\r",
+							"            <td>{{size}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "audio/mpeg",
+						"type": "text"
+					}
+				],
+				"url": "localhost:5010/audio/1"
+			},
+			"response": []
+		},
+		{
+			"name": "update one",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>ID</th>\r",
+							"        <th>Title</th>\r",
+							"        <th>Genre</th>\r",
+							"        <th>Size</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response.audio}}\r",
+							"        <tr>\r",
+							"            <td>{{id}}</td>\r",
+							"            <td>{{title}}</td>\r",
+							"            <td>{{genre}}</td>\r",
+							"            <td>{{size}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "audio/mpeg",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "new title",
+							"type": "text"
+						},
+						{
+							"key": "imageFile",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "genre",
+							"value": "jazz",
+							"type": "text"
+						}
+					]
+				},
+				"url": "localhost:5010/audio/5"
+			},
+			"response": []
+		}
+	]
+}
